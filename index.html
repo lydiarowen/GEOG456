@@ -11,15 +11,20 @@
     .aDiv{background-color: blanchedalmond;}
 </style>
 <body>
-    <h1 onclick="alert('Hello there')"> Click Here! </h1>
+    <h1 onclick="alert('Hello there')"> Click here</h1>
 <div class ="aDiv">
-    <h2 onclick = "daAlert()">Click here!</h2>
+    <h2 onclick = "console.log('the div was clicked')">Click here</h2>
 </div>
 </body>
+
 <script>
     function daAlert() {
-        alert("the div was clicked")
+        var daTime = Date();
+        alert("Hello, today is : " + daTime);
     }
 </script>
+
 </html>
+
+
 
