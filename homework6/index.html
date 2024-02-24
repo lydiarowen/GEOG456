@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script src = "./data/nc_join.js"> 
+</script>
+
+
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px rgb(135, 64, 51);
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+      background-color: #af9b9b;
+}
+
+
+</style>
+
+</body>
+
+<h2>Car Dependency</h2>
+
+<table id = "myTable">
+    <tr>
+        <th>County</th>
+        <th>% Commuting via Car</th>
+    </tr>
+</table>
+
+<script>
+var x = document.getElementById('myTable')
+
+
+for (var i = 0; i < data.features.length; i++) {
+    var myNewRow = document.createElement('tr');
+    var myNewCell1 = document.createElement('td'); 
+    var myNewCell2 = document.createElement('td'); 
+
+    myNewCell1.innerText = data.features[i].properties.CountyName;
+    myNewCell2.innerText = data.features[i].properties.Car;
+
+    myNewRow.append(myNewCell1);
+    myNewRow.append(myNewCell2);
+
+    x.append(myNewRow);
+}
+
+</script>
+
+</body>
+</html>
