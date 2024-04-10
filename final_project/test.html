@@ -13,6 +13,8 @@
     </style>
 </head>
 <body>
+    <h1>Lesbian Bars Over Time, 1911-2024</h1>
+    <h2 id="theYear"> Year: 1911</h2>
     <div id="map"></div>
     <input id="year-slider" type="range" min="1910" max="2024" step="1" value="1910">
 
@@ -32,38 +34,42 @@
         var geoJSONLayer;
 
         function updateMap(year) {
-            // Remove existing layer if it exists
-            if (geoJSONLayer) {
-                map.removeLayer(geoJSONLayer);
+    // Remove existing layer if it exists
+    if (geoJSONLayer) {
+        map.removeLayer(geoJSONLayer);
+    }
+
+    // Filter data based on selected year
+    var filteredData = data.features.filter(function(feature) {
+        return feature.properties.Year == year;
+    });
+
+    // Create a GeoJSON layer with filtered data
+    geoJSONLayer = L.geoJSON(filteredData, {
+        pointToLayer: function (feature, latlng) {
+            return L.marker(latlng);
+        },
+        onEachFeature: function (feature, layer) {
+            if (feature.properties && feature.properties.title) {
+                layer.bindPopup('<h3>' + feature.properties.title + '</h3>' +
+                                '<p>' + feature.properties.streetaddress + ', ' + feature.properties.city + '</p>' +
+                                '<p>Year: ' + feature.properties.Year + '</p>');
             }
-
-            // Filter data based on selected year
-            var filteredData = data.features.filter(function(feature) {
-                return feature.properties.Year <= year;
-            });
-
-            // Create a GeoJSON layer with filtered data
-            geoJSONLayer = L.geoJSON(filteredData, {
-                pointToLayer: function (feature, latlng) {
-                    return L.marker(latlng);
-                },
-                onEachFeature: function (feature, layer) {
-                    if (feature.properties && feature.properties.title) {
-                        layer.bindPopup('<h3>' + feature.properties.title + '</h3>' +
-                                        '<p>' + feature.properties.streetaddress + ', ' + feature.properties.city + '</p>' +
-                                        '<p>Year: ' + feature.properties.Year + '</p>');
-                    }
-                }
-            }).addTo(map);
         }
+    }).addTo(map);
+}
+
+
 
         // Initial map load
-        updateMap(1910);
+        updateMap(1911);
 
         // Add event listener for slider input
         var slider = document.getElementById('year-slider');
         slider.addEventListener('input', function() {
-            updateMap(parseInt(this.value));
+        var value = parseInt(this.value);
+        updateMap(value); // Update the map based on the slider value
+        document.getElementById('theYear').innerHTML = 'Year: ' + value; // Update the text above the map
         });
     </script>
 </body>
