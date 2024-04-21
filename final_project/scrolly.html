@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrolly</title>
+</head>
+<style>
+    body{
+        background-color: rgb(217, 106, 33);
+        font-size:20px;
+        height:2000px;
+    
+        
+    }
+    div#image_container{
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 80px;
+        
+    }
+    img{
+        width: 100%;
+        position: absolute;
+    }
+
+    #map_zoom{
+        z-index: 3;
+        opacity: 1;
+    }
+    #arcana_1{
+        z-index: 3;
+        opacity: 1;
+    }
+    #arcana_2{
+        z-index: 3;
+        opacity: 1;
+    }
+    #arcana_3{
+        z-index: 3;
+        opacity: 1;
+    }
+    #arcana_4{
+        z-index: 3;
+        opacity: 1;
+    }
+#myText{
+    color: rgb(92, 37, 53);
+    top: 80px;
+    display: grid;
+    width: 200px;
+    height: 1000px;
+    grid-template-rows: 100%;
+    background-color: rgba(207, 136, 150, 0.346);
+    position: absolute;
+    right: 0%;
+    margin-left: 50%;
+}
+#map_zoom{
+
+    background-color: rgba(255, 238, 0, 0.5);
+    /* color: brown; */
+}
+#myP{
+    top:0;
+    position: fixed;
+    color: rgb(3, 59, 108);
+}
+h3{
+    color: white;
+    position: fixed;
+    font-size: 20px;
+    top: 30px;
+}
+</style>
+<body>
+    <h3 id="h3scroll">The onscroll Event</h3><br>
+
+    <p id="myP" style="position:fixed">
+        Scroll to learn about Arcana</p> <br>
+    <div id="image_container">
+        <img id="map_zoom"  src="./images/map_zoom.png" alt="">
+        <img id="arcana_1"  src="./images/arcana_1.png" alt="">
+        <!-- <img id="arcana_2"  src="./images/arcana_2.png" alt="">
+        <img id="arcana_3"  src="./images/arcana_3.png" alt="">
+        <img id="arcana_4"  src="./images/arcana_4.jpeg" alt=""> -->
+
+    </div>
+    <div id="myText">
+    <div id="durhamMap">
+        <h1>Arcana Bar and Lounge</h1>
+        <p>intro to arcana</p>
+    </div>
+    <div id="streetMap">
+        <h1>Downtown Durham</h1>
+        <p>info abt it being in durham</p>
+    </div>
+    <div id="doorImg">
+        <h1>Door </h1>
+        <p>how entrance is at the back, underground vibes</p>
+    </div>
+    <div id="beerLove">
+        <h1>Beer Love - values</h1>
+        <p>their values</p>
+    </div>
+    <div id="groupImg">
+        <h1>group pic</h1>
+        <p>celebrating 8 years pic - their future</p>
+    </div>
+    <script>
+        var maxY = document.documentElement.scrollHeight - document.documentElement.clientHeight
+        // The previous is a good way of calculating the maximum vertical scrolling. 
+
+        window.onscroll = function() {myFunction()}; // when you scroll the myFunction will be called. 
+
+        // myFunction changes the opacity of the image based on the scroll
+
+        function myFunction() {
+            var opacity = window.scrollY/maxY
+            document.getElementById('arcana_1').style.opacity = opacity
+
+
+             // I added this next line so you can see the values generated when you scroll displayed on the page. 
+            document.getElementById("h3scroll").innerText = "  MaxY = " + maxY +  "   Scroll Y = "+window.scrollY + "  Scoll Y / Max Y = " + window.scrollY/maxY
+        }
+
+    </script>
+    
+    
+</body>
+</html>
