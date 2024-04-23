@@ -29,6 +29,7 @@
 			padding: 0 1rem;
 			max-width: 20rem;
 		}
+
 		figure {
 			position: -webkit-sticky;
 			position: sticky;
@@ -86,28 +87,30 @@
 <body>
 	<main>
 		<section id="intro">
-			<h1 class="intro__hed">Arcana</h1>
+			<h1 class="intro__hed">Looking Local</h1>
 			<p class="intro__dek">
-				lesbians rule.
+				Arcana Bar and Lounge
+
 			</p>
 		</section>
 
 		<section id="scrolly">
 			<article>
 				<div class="step" data-step="1">
-					<p>STEP 1</p>
+					<p>Lindsey Andrews and Erin Karcher opened Arcana in 2015. They worked for years at several Durham restaurants and bars like Joe and Jos, The Federal, and Watts Grocery, as well as new spots like Mateo and Atomic Fern. They dreamed of creating a space that did not yet exist in Durham. The name Arcana refers to secret knowledge—the sort that, when shared, creates a community that surrounds it. 
+					</p>
 				</div>
 				<div class="step" data-step="2">
-					<p>STEP 2</p>
+					<p>Arcana is located in downtown Durham, right on Main Street. It is a bit beyond the beaten path: the entrance is at the back of the building where you take the mysterious stairs down into the basement. Once you enter, you feel right at home.</p>
 				</div>
 				<div class="step" data-step="3">
-					<p>STEP 3</p>
+					<p>Arcana provides a cozy, comfortable, intimate bar space, with a New Orleans-meets-Prague Art Noveau style. They offer delicious wines, local craft beers, and modern cocktails. They are also true to our name: highlighting the arcana of herbalism through a drink menu that uses herbs and an extensive collection of liqueurs. Arcana is a space for artists, live performances, theater, dance, intimate conversation, and unwinding.</p>
 				</div>
 				<div class="step" data-step="4">
-					<p>STEP 4</p>
+					<p>Tarot has been an integral part of Arcana from the beginning. They have a tarot card reader at Arcana most days of the week. Tarot card readings are first come/first served, and there is a wait list available where you can sign up. “The tarot can create this instant intimacy, where you might open up more to your tarot card reader than to a therapist or a best friend, and all the sudden get cut to the quick about whats going on in your life or whats troubling you or where you need guidance,” owner Karcher says. </p>
 				</div>
 				<div class="step" data-step="4">
-					<p>STEP 5</p>
+					<p>Remembering and preserving queer spaces matters. These bars can become beautiful spaces for community, but like anything beautiful... they must be nurtured. Next time you find yourself in Durham, spend an evening at Arcana and treat yourself to a tarot reading. To stay up to date, you can follow Arcana on Instagram at ArcanaDurham.</p>
 				</div>
 			</article>
 
@@ -117,7 +120,8 @@
 		</section>
 
 		<section id="outro">
-			Sources:
+			Sources: blah blah 
+
 			
 		</section>
 	</main>
@@ -137,10 +141,30 @@
 		var scroller = scrollama();
 
 		// generic window resize listener event
+
+		// function handleResize() {
+		// 	// 1. update height of step elements
+		// 	var stepH = Math.floor(window.innerHeight * 0.75);
+		// 	step.style("height", stepH + "px");
+
+		// 	var figureHeight = window.innerHeight / 2;
+		// 	var figureMarginTop = (window.innerHeight - figureHeight) / 2;
+
+		// 	figure
+		// 		.style("height", figureHeight + "px")
+		// 		.style("top", figureMarginTop + "px");
+
+		// 	// 3. tell scrollama to update new element dimensions
+		// 	scroller.resize();
+		// }
+
+		// generic window resize listener event
 		function handleResize() {
 			// 1. update height of step elements
-			var stepH = Math.floor(window.innerHeight * 0.75);
-			step.style("height", stepH + "px");
+			step.each(function() {
+				var stepHeight = this.getBoundingClientRect().height;
+				d3.select(this).style("height", stepHeight + "px");
+			});
 
 			var figureHeight = window.innerHeight / 2;
 			var figureMarginTop = (window.innerHeight - figureHeight) / 2;
@@ -149,9 +173,10 @@
 				.style("height", figureHeight + "px")
 				.style("top", figureMarginTop + "px");
 
-			// 3. tell scrollama to update new element dimensions
+			// 2. tell scrollama to update new element dimensions
 			scroller.resize();
 		}
+
 
 		// scrollama event handlers
 		// function handleStepEnter(response) {
